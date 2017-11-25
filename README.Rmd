@@ -5,9 +5,9 @@ output:
 ---
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/easyboot)](https://cran.r-project.org/package=easyboot)
-[![Travis-CI Build Status](https://travis-ci.org/<USERNAME>/<REPO>.svg?branch=master)](https://travis-ci.org/<USERNAME>/<REPO>)
-[![Coverage Status](https://img.shields.io/codecov/c/github/<USERNAME>/<REPO>/master.svg)](https://codecov.io/github/<USERNAME>/<REPO>?branch=master)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/<USERNAME>/<REPO>?branch=master&svg=true)](https://ci.appveyor.com/project/<USERNAME>/<REPO>)
+[![Travis-CI Build Status](https://travis-ci.org/kamermanpr/easyboot.svg?branch=master)](https://travis-ci.org/kamermanpr/easyboot)
+[![Coverage Status](https://img.shields.io/codecov/c/github/kamermanpr/easyboot/master.svg)](https://codecov.io/github/kamermanpr/easyboot?branch=master)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/<USERNAME>/<REPO>?branch=master&svg=true)](https://ci.appveyor.com/project/kamermanpr/easyboot)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
