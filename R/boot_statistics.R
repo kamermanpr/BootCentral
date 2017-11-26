@@ -22,12 +22,9 @@
 boot_mean <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x')
-    # Remove NA
-    df[!is.na(df$x), ]
     # Calculate arithmetic mean
-    mean(df$x)
+    mean(df,
+         na.rm = TRUE)
 }
 
 #' @describeIn boot_mean Calculates a geometric mean
@@ -35,13 +32,11 @@ boot_mean <- function(d, i){
 boot_geometric <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x')
     # Remove NA
-    df[!is.na(df$x), ]
+    df[!is.na(df)]
     # Calculate geometric mean
-    n <- nrow(df)
-    prod(df$x)^(1/n)
+    n <- length(df)
+    prod(df)^(1/n)
 }
 
 #' @describeIn boot_mean Calculates a median
@@ -49,12 +44,9 @@ boot_geometric <- function(d, i){
 boot_median <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x')
-    # Remove NA
-    df[!is.na(df$x), ]
     # Calculate median
-    median(df$x)
+    median(df,
+           na.rm = TRUE)
 }
 
 #' @describeIn boot_mean Calculates a mode
@@ -62,13 +54,11 @@ boot_median <- function(d, i){
 boot_mode <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x')
     # Remove NA
-    df[!is.na(df$x), ]
+    df[!is.na(df)]
     # Calculate mode
-    uniqv <- unique(df$x)
-    uniqv[which.max(tabulate(match(df$x, uniqv)))]
+    uniqv <- unique(df)
+    uniqv[which.max(tabulate(match(df, uniqv)))]
 }
 
 #' @describeIn boot_mean Calculates a proportion
@@ -76,12 +66,10 @@ boot_mode <- function(d, i){
 boot_prop <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x')
     # Remove NA
-    df[!is.na(df$x), ]
+    df[!is.na(df)]
     # Calculate proportion
-    tab <- table(df$x)
+    tab <- table(df)
     prop.table(tab)[[2]]
 }
 
