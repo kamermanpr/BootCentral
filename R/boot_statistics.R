@@ -22,9 +22,10 @@
 boot_mean <- function(d, i){
     # Sample
     df <- d[i, ]
+    # Remove NA
+    df <- df[!is.na(df)]
     # Calculate arithmetic mean
-    mean(df,
-         na.rm = TRUE)
+    mean(df)
 }
 
 #' @describeIn boot_mean Calculates a geometric mean
@@ -33,7 +34,7 @@ boot_geometric <- function(d, i){
     # Sample
     df <- d[i, ]
     # Remove NA
-    df[!is.na(df)]
+    df <- df[!is.na(df)]
     # Calculate geometric mean
     n <- length(df)
     prod(df)^(1/n)
@@ -44,9 +45,10 @@ boot_geometric <- function(d, i){
 boot_median <- function(d, i){
     # Sample
     df <- d[i, ]
+    # Remove NA
+    df <- df[!is.na(df)]
     # Calculate median
-    median(df,
-           na.rm = TRUE)
+    median(df)
 }
 
 #' @describeIn boot_mean Calculates a mode
@@ -55,7 +57,7 @@ boot_mode <- function(d, i){
     # Sample
     df <- d[i, ]
     # Remove NA
-    df[!is.na(df)]
+    df <- df[!is.na(df)]
     # Calculate mode
     uniqv <- unique(df)
     uniqv[which.max(tabulate(match(df, uniqv)))]
@@ -67,10 +69,11 @@ boot_prop <- function(d, i){
     # Sample
     df <- d[i, ]
     # Remove NA
-    df[!is.na(df)]
+    df <- df[!is.na(df)]
     # Calculate proportion
-    tab <- table(df)
-    prop.table(tab)[[2]]
+    tab <- table(df,
+                 useNA = 'no')
+    prop.table(tab)[[1]]
 }
 
 #' @describeIn boot_mean Calculates the difference between arithmetic means
@@ -78,14 +81,12 @@ boot_prop <- function(d, i){
 boot_delta_mean <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x', 'y')
     # Remove NA
-    df[complete.cases(df), ]
+    df <- df[complete.cases(df), ]
     # Get unique values for grouping variable
-    uniq <- unique(df$y)
+    uniq <- unique(df[[2]])
     # Calculate delta means
-    mean(df$x[df$y == uniq[[1]]]) - mean(df$x[df$y == uniq[[2]]])
+    mean(df[1][df[2] == uniq[[1]]]) - mean(df[1][df[2] == uniq[[2]]])
 }
 
 #' @describeIn boot_mean Calculates the difference between geometric means
@@ -93,21 +94,19 @@ boot_delta_mean <- function(d, i){
 boot_delta_geometric <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x', 'y')
     # Remove NA
-    df[complete.cases(df), ]
+    df <- df[complete.cases(df), ]
     # Get unique values for grouping variable
-    uniq <- unique(df$y)
+    uniq <- unique(df[[2]])
     # Seperate by grouping variable
-    df_1 <- df$x[df$y == uniq[[1]]]
-    df_2 <- df$x[df$y == uniq[[2]]]
+    df_1 <- df[1][df[2] == uniq[[1]]]
+    df_2 <- df[1][df[2] == uniq[[2]]]
     # Calculate delta geometric mean
-    n_1 <- nrow(df_1)
-    n_2 <- nrow(df_2)
+    n_1 <- length(df_1)
+    n_2 <- length(df_2)
     geo_1 <- prod(df_1)^(1/n_1)
     geo_2 <- prod(df_2)^(1/n_2)
-    geom_1 - geom_2
+    geo_1 - geo_2
 }
 
 #' @describeIn boot_mean Calculates the difference between medians
@@ -115,14 +114,12 @@ boot_delta_geometric <- function(d, i){
 boot_delta_median <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x', 'y')
     # Remove NA
-    df[complete.cases(df), ]
+    df <- df[complete.cases(df), ]
     # Get unique values for grouping variable
-    uniq <- unique(df$y)
+    uniq <- unique(df[[2]])
     # Calculate delta medians
-    median(df$x[df$y == uniq[[1]]]) - median(df$x[df$y == uniq[[2]]])
+    median(df[1][df[2] == uniq[[1]]]) - median(df[1][df[2] == uniq[[2]]])
 }
 
 #' @describeIn boot_mean Calculates an odds ratio
@@ -130,13 +127,14 @@ boot_delta_median <- function(d, i){
 boot_OR <- function(d, i){
     # Sample
     df <- d[i, ]
-    # Rename columns
-    colnames(df) <- c('x', 'y')
     # Remove NA
-    df[complete.cases(df), ]
+    df <- df[complete.cases(df), ]
     # xtabulate
-    x_tab <- xtabs(~ x + y,
-                   data = df)
+    x_tab <- table(df)
     # Calculate odds ratio
-    fisher.test(x_tab)$estimate
+    x_odds <- fisher.test(x_tab)$estimate
+    # Remove name
+    names(x_odds) <- NULL
+    # Print
+    x_odds
 }
