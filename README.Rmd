@@ -4,10 +4,10 @@ output:
     variant: markdown_github
 ---
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/easyboot)](https://cran.r-project.org/package=easyboot)
-[![Travis-CI Build Status](https://travis-ci.org/kamermanpr/easyboot.svg?branch=master)](https://travis-ci.org/kamermanpr/easyboot)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kamermanpr/easyboot?branch=master&svg=true)](https://ci.appveyor.com/project/kamermanpr/easyboot)
-[![Coverage Status](https://img.shields.io/codecov/c/github/kamermanpr/easyboot/master.svg)](https://codecov.io/github/kamermanpr/easyboot?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/BootCentral)](https://cran.r-project.org/package=BootCentral)
+[![Travis-CI Build Status](https://travis-ci.org/kamermanpr/BootCentral.svg?branch=master)](https://travis-ci.org/kamermanpr/BootCentral)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kamermanpr/BootCentral?branch=master&svg=true)](https://ci.appveyor.com/project/kamermanpr/BootCentral)
+[![Coverage Status](https://img.shields.io/codecov/c/github/kamermanpr/BootCentral/master.svg)](https://codecov.io/github/kamermanpr/BootCentral?branch=master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -19,9 +19,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# easyboot
+# BootCentral
 
-The goal of easyboot is to ...
+The goal of BootCentral is to ...
 
 ## Example
 

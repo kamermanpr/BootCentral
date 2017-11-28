@@ -1,4 +1,4 @@
 library(testthat)
-library(easyboot)
+library(BootCentral)
 
-test_check("easyboot")
+test_check("BootCentral")

@@ -2,9 +2,11 @@
 
 export(boot_OR)
 export(boot_delta_geometric)
+export(boot_delta_harmonic)
 export(boot_delta_mean)
 export(boot_delta_median)
 export(boot_geometric)
+export(boot_harmonic)
 export(boot_mean)
 export(boot_median)
 export(boot_mode)

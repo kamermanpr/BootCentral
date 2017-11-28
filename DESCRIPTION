@@ -1,10 +1,10 @@
-Package: easyboot
+Package: BootCentral
 Type: Package
-Title: Quick And Easy Bootstrap Summary Statistics
+Title: Bootstrap Summary Statistics for Measures of Central Tendency
 Version: 0.0.0.9000
 Author: Peter Kamerman
 Maintainer: Peter Kamerman <peter.kamerman@gmail.com>
-Description: Wrapper functions for "boot::boot", and "boot::boot.ci" to create a tidy dataframe of equi-tailed two-sided nonparametric confidence intervals [options: first order normal approximation, basic interval, studentized interval, percentile interval, and bias-adjusted accelerated interval (default)] for measures of central tendancy (arithmetic mean, geometric mean, median, mode) for numerical data. In addition confidence intervals for a difference in means and medians can be calculated if there is a two-level grouping variable. In the case of binomial categorical data, confidence intervals of proportions and odds ratios (in the presence of a two-level grouping variable) can be calculated. All functions play nicely with the "tidyverse". 
+Description: Wrapper functions for "boot::boot" and "boot::boot.ci" to create a tidy dataframe of equi-tailed two-sided nonparametric confidence intervals [options: first order normal approximation, basic interval, studentized interval, percentile interval, and bias-adjusted accelerated interval (default)] for measures of central tendency (arithmetic mean, geometric mean, harmonic mean median, and mode) for numerical data. In addition confidence intervals for a difference in means (arithmetic, geometric, and harmonic) and medians can be calculated if a two-level grouping variable is supplied. In the case of binomial categorical data, confidence intervals of proportions and odds ratios (in the presence of a two-level grouping variable) can be calculated. All functions play nicely with the "tidyverse". 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

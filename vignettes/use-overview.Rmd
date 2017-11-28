@@ -1,10 +1,10 @@
 ---
-title: "Using easyboot"
+title: "Basic usage of BootCentral"
 author: "Peter Kamerman"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{using-easyboot}
+  %\VignetteIndexEntry{Using BootCentral}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
