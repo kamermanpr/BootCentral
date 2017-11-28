@@ -1,4 +1,4 @@
-library(easyboot)
+library(BootCentral)
 
 test_that("Assess whether 'boot' statistic functions work as expected", {
 
@@ -31,6 +31,15 @@ test_that("Assess whether 'boot' statistic functions work as expected", {
                  expected = 0.2265819,
                  tolerance = 0.001)
 
+
+    # Test boot_harmonic
+    expect_equal(object = boot::boot(data = foo,
+                                     statistic = boot_harmonic,
+                                     R = 1000,
+                                     stype = 'i')$t0,
+                 expected = 0.2087683,
+                 tolerance = 0.001)
+
     # Test boot_median
     expect_equal(object = boot::boot(data = foo,
                                      statistic = boot_median,
@@ -56,7 +65,7 @@ test_that("Assess whether 'boot' statistic functions work as expected", {
                  expected = 0.6202532,
                  tolerance = 0.001)
 
-    # Test difference between arithmetic means
+    # Test difference between arithmetic means (boot_delta_mean)
     expect_equal(object = boot::boot(data = baz,
                                      statistic = boot_delta_mean,
                                      R = 1000,
@@ -64,7 +73,7 @@ test_that("Assess whether 'boot' statistic functions work as expected", {
                  expected = -1.079061,
                  tolerance = 0.001)
 
-    # Test the difference between geometric means
+    # Test the difference between geometric means (boot_delta_geometric)
     expect_equal(object = boot::boot(data = baz,
                                      statistic = boot_delta_geometric,
                                      R = 1000,
@@ -72,7 +81,15 @@ test_that("Assess whether 'boot' statistic functions work as expected", {
                  expected = -1.084028,
                  tolerance = 0.001)
 
-    # Test the difference between medians
+    # Test difference between harmonic means (boot_delta_harmonic)
+    expect_equal(object = boot::boot(data = baz,
+                                     statistic = boot_delta_harmonic,
+                                     R = 1000,
+                                     stype = 'i')$t0,
+                 expected = -1.087073,
+                 tolerance = 0.001)
+
+    # Test the difference between medians (boot_delta_median)
     expect_equal(object = boot::boot(data = baz,
                                      statistic = boot_delta_median,
                                      R = 1000,
@@ -80,7 +97,7 @@ test_that("Assess whether 'boot' statistic functions work as expected", {
                  expected = -1.1,
                  tolerance = 0.001)
 
-    # Test the odds ratio
+    # Test the odds ratio (boot_OR)
     expect_equal(object = boot::boot(data = qux,
                                      statistic = boot_OR,
                                      R = 1000,
